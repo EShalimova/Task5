@@ -1,0 +1,36 @@
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: Task5
+
+  sql:
+    init:
+      mode: always
+      #mode: never
+      schema-locations: classpath*:/init_date.sql
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/postgres
+    #url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+          auto-commit: false
+
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start_only
+      #start_and_stop
+      start:
+        log-level: info
+        command: up
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: true

@@ -1,0 +1,38 @@
+services:
+  #service_app:
+    #image: service_app
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
+    #container_name: cont_app
+    #environment:
+    #  POSTGRES_DB: postgres
+    #  POSTGRES_PASSWORD: postgres
+    #  POSTGRES_USER: postgres
+    #ports:
+    #  - "8082:8080"
+    #depends_on:
+    #  - postgres
+    #links:
+    #  - postgres
+    #networks:
+    #  - ps
+
+  postgres:
+    image: postgres:latest
+    container_name: cont_postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    #restart:
+    #  unless-stopped
+    #networks:
+    # - ps
+
+  #networks:
+
